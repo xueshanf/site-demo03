@@ -1,0 +1,18 @@
+[Unit]
+Description=Drupal Site for Demo
+After=docker.service
+Requires=docker.service
+
+[Service]
+EnvironmentFile=/var/lib/apps/site-demo03/envvars
+# Pulling a docker images may take forever
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill %n
+ExecStartPre=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/mkdir -p /var/log/apps/%n.log
+ExecStartPre=/usr/bin/docker pull $IMAGE
+ExecStart=/usr/bin/docker run --rm --name %n --env-file=/var/lib/apps/site-demo03/envvars -p 8081:8080 \
+    -v /var/log/apps/%n.log:/var/log/apache2 $IMAGE
+#ExecStartPost=/var/lib/apps/bin/elb-hookup %n
+#ExecStopPre=/var/lib/apps/bin/elb-unhook %n
+ExecStop=/usr/bin/docker stop %n

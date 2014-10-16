@@ -1,0 +1,16 @@
+IMAGE=registry-private.itlab.stanford.edu/suet/drupal-demo
+
+SITE_NAME=Starter Site
+SITE_TYPE=group
+SITE_REQUESTER_MAIL=swl@stanford.edu
+SITE_REQUESTER_NAME=Scotty Logan
+SITE_REQUESTER_SUNETID=swl
+ADMIN_MAIL=swl+admin@stanford.edu
+ADMIN_USER=admin
+RDS_DB_NAME=demo03
+RDS_USERNAME=demo03
+RDS_HOSTNAME=demo03.db.itlab.stanford.edu
+
+# Credentials are stored in CI
+#RDS_PASSWORD=
+#ADMIN_PASSWORD=
